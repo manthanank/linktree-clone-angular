@@ -1,17 +1,21 @@
 # Linktree Clone in Angular
 
-## Setup
+## Setup -
 
 1. Fork this project
 2. Edit this file [data](src/assets/data.json)
 3. Replace [picture.png](src/assets/images/picture.png) with your picture with same name and format `picture.png` so that it also set to favicon.
 4. Finally deploy to `Vercel` and your Linktree Clone is ready!
 
-## Live Preview `:`
+## Deploy -
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2Fmanthanank%2Flinktree-clone-angular&hasTrialAvailable=1&showOptionalTeamCreation=false&project-name=linktree-clone-angular&framework=angular&totalProjects=1&remainingProjects=1)
+
+## Live Preview -
 
 ![preview](src/assets/images/preview.png)
 
-## Demo Link : [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
+## Demo Link - [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
 
 ## Please support and Don't forget to give star⭐
 
