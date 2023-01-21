@@ -1,6 +1,15 @@
-# LinktreeCloneAngular
+# Linktree Clone in Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
+## Setup
+
+1. Fork this project
+2. Edit this file [data](src/assets/data.json)
+3. Replace [picture.png](src/assets/images/picture.png) with your picture with same name and format `picture.png` so that it also set to favicon.
+4. Finally deploy to `Vercel` and your Linktree Clone is ready!
+
+## Please support and Don't forget to give star⭐
+
+<!-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
 ## Development server
 
@@ -24,4 +33,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->

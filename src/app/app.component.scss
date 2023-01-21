@@ -1,0 +1,124 @@
+header {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+    margin-top: 15px;
+
+    .share-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: rgb(240, 240, 240);
+    }
+
+    .share-button svg {
+        margin-left: 12px;
+        margin-top: 10px;
+        color: rgb(0, 0, 0);
+    }
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    width: 91%;
+    max-width: 680px;
+    // margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-container {
+    text-align: center;
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h6 {
+        margin-top: 0;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+}
+
+.tile-container {
+    width: 100%;
+    background-color: rgb(37, 37, 37);
+    margin: 7px;
+    border-radius: 17px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        text-decoration: none;
+        color: rgb(240, 240, 240);
+    }
+
+    .tile {
+        width: 100%;
+        background-color: rgb(37, 37, 37);
+        margin: 7px;
+        border-radius: 17px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tile:hover {
+        transition: cubic-bezier(.07, 1.41, .82, 1.41) 0.2s;
+        transform: scale(1.02);
+    }
+
+    .tile-share-button {
+        margin: 8px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: rgb(52, 52, 52);
+    }
+
+    .tile-share-button svg {
+        margin-left: 12px;
+        margin-top: 10px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+}
+
+.image-container {
+    height: 96px;
+    width: 96px;
+    border-radius: 48px;
+    overflow: hidden;
+}
+
+.image-container img {
+    height: 100%;
+}
+
+
+.icon {
+    margin: 4px 20px;
+    width: 44px;
+    height: 44px;
+}
+
+.footer-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: 10px;
+    }
+}
