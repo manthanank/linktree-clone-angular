@@ -7,6 +7,12 @@
 3. Replace [picture.png](src/assets/images/picture.png) with your picture with same name and format `picture.png` so that it also set to favicon.
 4. Finally deploy to `Vercel` and your Linktree Clone is ready!
 
+## Live Preview `:`
+
+![preview](src/assets/images/preview.png)
+
+## Demo Link : [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
+
 ## Please support and Don't forget to give star⭐
 
 <!-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
