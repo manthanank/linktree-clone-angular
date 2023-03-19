@@ -13,7 +13,7 @@
 
 ## Live Preview -
 
-![preview](src/assets/images/preview.png)
+![preview](src/assets/images/preview.webp)
 
 ## Demo Link - [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
 
