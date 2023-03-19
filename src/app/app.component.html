@@ -12,17 +12,17 @@
       </div>
     </div>
     <div class="image-container">
-      <img ngSrc="/assets/images/picture.png" width="100" height="200" priority alt="">
+      <img ngSrc="/assets/images/picture.png" width="100" height="100" priority alt="">
     </div>
     <div class="text-container">
-      <h1>@{{item.name}}</h1>
-      <h6>{{item.desc}}</h6>
+      <p class="text-md">@{{item.name}}</p>
+      <p class="text-2xl">{{item.desc}}</p>
     </div>
 
     <div class="tile-container" *ngFor="let item of data[0].links">
       <a class="tile" href={{item.url}} target="_blank">
         <div class="icon">
-          <img src={{item.icon}} alt="">
+          <img src={{item.icon}} alt="app logo">
         </div>
         <p>{{item.name}}</p>
         <a class="tile-share-button" href={{item.url}} target="_blank" aria-label="link">
