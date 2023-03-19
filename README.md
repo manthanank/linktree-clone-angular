@@ -17,6 +17,10 @@
 
 ## Demo Link - [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
 
+## LightHouse Report - 
+
+![Report](src/assets/images/report.webp)
+
 ## Please support and Don't forget to give star⭐
 
 <!-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
