@@ -16,14 +16,20 @@ main {
 .text-container {
     text-align: center;
 
-    h1 {
-        font-size: 20px;
+    .name {
+        p{
+            font-size: 20px;
+            font-weight: bolder;
+        }
     }
 
-    h6 {
-        margin-top: 0;
-        font-size: 18px;
-        margin-bottom: 30px;
+    .desc {
+        p{
+            margin-top: 0;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: bolder;
+        }
     }
 }
 

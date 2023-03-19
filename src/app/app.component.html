@@ -15,8 +15,8 @@
       <img ngSrc="/assets/images/picture.webp" width="96" priority height="96" alt="">
     </div>
     <div class="text-container">
-      <p class="text-md">@{{item.name}}</p>
-      <p class="text-2xl">{{item.desc}}</p>
+      <div class="name"><p>@{{item.name}}</p></div>
+      <div class="desc"><p>{{item.desc}}</p></div>
     </div>
 
     <div class="tile-container" *ngFor="let item of data[0].links">
