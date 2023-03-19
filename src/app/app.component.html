@@ -22,7 +22,7 @@
     <div class="tile-container" *ngFor="let item of data[0].links">
       <a class="tile" href={{item.url}} target="_blank">
         <div class="icon">
-          <img src={{item.icon}} alt="app logo" height="40" width="40">
+          <img ngSrc={{item.icon}} alt="app logo" height="40" width="40">
         </div>
         <p>{{item.name}}</p>
         <a class="tile-share-button" href={{item.url}} target="_blank" aria-label="link">
