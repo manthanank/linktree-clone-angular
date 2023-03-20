@@ -26,10 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   shareUrl(){
-    // this.href = window.location.href;
-    // console.log(this.href);
-    // navigator.share(this.href)
-
     if (navigator.share) {
       navigator.share({
         title: 'My Angular App',
@@ -38,5 +34,15 @@ export class AppComponent implements OnInit {
       });
     }
   }
-  
+
+  shareLink(url:any){
+    console.log(url);
+    if (navigator.share) {
+      navigator.share({
+        title: 'Site Link',
+        text: 'Check out this link',
+        url: url
+      });
+    }
+  }
 }
