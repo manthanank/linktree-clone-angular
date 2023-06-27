@@ -17,7 +17,7 @@
 
 ## Demo Link - [linktree-clone-angular.vercel.app](https://linktree-clone-angular.vercel.app/)
 
-## LightHouse Report - 
+## LightHouse Report -
 
 ![Report](src/assets/images/report.webp)
 
