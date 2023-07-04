@@ -1,43 +1,23 @@
 [
     {
-        "name": "Manthanank",
+        "name": "Brandon Le",
         "desc":"Front End Developer",
         "iconurl": "/assets/images/picture.webp",
         "links": [
             {
                 "name": "Website",
                 "icon": "/assets/svg/website.svg",
-                "url": "http://manthanank.web.app"
-            },
-            {
-                "name":"Twitter",
-                "icon": "/assets/svg/twitter.svg",
-                "url": "https://twitter.com/manthan_ank"
+                "url": "https://main--merry-banoffee-8bba7f.netlify.app/index.html"
             },
             {
                 "name":"LinkedIn",
                 "icon": "/assets/svg/linkedin.svg",
-                "url": "https://www.linkedin.com/in/manthanank"
+                "url": "https://www.linkedin.com/in/brandon-le-95b49117b/"
             },
             {
                 "name":"GitHub",
                 "icon": "/assets/svg/github.svg",
-                "url": "https://github.com/manthanank"
-            },
-            {
-                "name":"Facebook",
-                "icon": "/assets/svg/facebook.svg",
-                "url": "https://www.facebook.com/manthanank/"
-            },
-            {
-                "name":"YouTube",
-                "icon": "/assets/svg/youtube.svg",
-                "url": "https://www.youtube.com/@manthanank"
-            },
-            {
-                "name":"Instagram",
-                "icon": "/assets/svg/instagram.svg",
-                "url": "https://www.instagram.com/manthan_ank/"
+                "url": "https://github.com/brandinole"
             }
         ]
     }
