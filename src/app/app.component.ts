@@ -1,11 +1,22 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Router, RouterOutlet } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    NgOptimizedImage,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'linktree-clone-angular';
@@ -15,17 +26,17 @@ export class AppComponent implements OnInit {
   href: any;
   // public href: string = "";
 
-  constructor(private http: HttpClient, private router: Router){}
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.http.get('/assets/data.json').subscribe(data => {
       this.data = data;
       this.name = data;
-      console.log(this.data);
+      // console.log(this.data);
     });
   }
 
-  shareUrl(){
+  shareUrl() {
     if (navigator.share) {
       navigator.share({
         title: 'My Angular App',
@@ -35,7 +46,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  shareLink(url:any){
+  shareLink(url: any) {
     console.log(url);
     if (navigator.share) {
       navigator.share({

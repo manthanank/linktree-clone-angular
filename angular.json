@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/linktree-clone-angular",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -27,9 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/sitemap.xml"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -53,12 +51,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -67,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "linktree-clone-angular:build:production"
+              "buildTarget": "linktree-clone-angular:build:production"
             },
             "development": {
-              "browserTarget": "linktree-clone-angular:build:development"
+              "buildTarget": "linktree-clone-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "linktree-clone-angular:build"
+            "buildTarget": "linktree-clone-angular:build"
           }
         },
         "test": {
@@ -104,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "45128f76-9ee7-4571-b42c-daaddf01a6ef"
+    "analytics": "f47bed65-563c-4803-89d1-580878835138"
   }
 }
