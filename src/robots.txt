@@ -1,0 +1,4 @@
+user-agent: *
+disallow: 
+
+sitemap: https://linktree-clone-angular.vercel.app/sitemap-file.xml
