@@ -1,42 +1,42 @@
 [
     {
-        "name": "Manthanank",
-        "desc":"Front End Developer",
-        "iconurl": "/assets/images/picture.webp",
+        "name": "Manthan Ankolekar",
+        "desc":"Software Developer",
+        "iconurl": "images/picture.webp",
         "links": [
             {
                 "name": "Website",
-                "icon": "/assets/svg/website.svg",
+                "icon": "svg/website.svg",
                 "url": "http://manthanank.web.app"
             },
             {
                 "name":"Twitter",
-                "icon": "/assets/svg/twitter.svg",
+                "icon": "svg/twitter.svg",
                 "url": "https://twitter.com/manthan_ank"
             },
             {
                 "name":"LinkedIn",
-                "icon": "/assets/svg/linkedin.svg",
+                "icon": "svg/linkedin.svg",
                 "url": "https://www.linkedin.com/in/manthanank"
             },
             {
                 "name":"GitHub",
-                "icon": "/assets/svg/github.svg",
+                "icon": "svg/github.svg",
                 "url": "https://github.com/manthanank"
             },
             {
                 "name":"Facebook",
-                "icon": "/assets/svg/facebook.svg",
+                "icon": "svg/facebook.svg",
                 "url": "https://www.facebook.com/manthanank/"
             },
             {
                 "name":"YouTube",
-                "icon": "/assets/svg/youtube.svg",
+                "icon": "svg/youtube.svg",
                 "url": "https://www.youtube.com/@manthanank"
             },
             {
                 "name":"Instagram",
-                "icon": "/assets/svg/instagram.svg",
+                "icon": "svg/instagram.svg",
                 "url": "https://www.instagram.com/manthan_ank/"
             }
         ]

@@ -1,5 +1,6 @@
 <main>
-  <div class="container" *ngFor="let item of data">
+  @for (item of data; track $index) {
+  <div class="container">
     <div class="header-container">
       <div class="share-button">
         <p (click)="shareUrl()">
@@ -12,14 +13,19 @@
       </div>
     </div>
     <div class="image-container">
-      <img ngSrc="/assets/images/picture.webp" width="96" priority height="96" alt="">
+      <img ngSrc="{{item.iconurl}}" width="96" priority height="96" alt="profile image">
     </div>
     <div class="text-container">
-      <div class="name"><p>{{item.name}}</p></div>
-      <div class="desc"><p>{{item.desc}}</p></div>
+      <div class="name">
+        <p>{{item.name}}</p>
+      </div>
+      <div class="desc">
+        <p>{{item.desc}}</p>
+      </div>
     </div>
 
-    <div class="tile-container" *ngFor="let item of data[0].links">
+    @for (item of data[0].links; track $index) {
+    <div class="tile-container">
       <a class="tile" href={{item.url}} target="_blank">
         <div class="icon">
           <img ngSrc={{item.icon}} alt="app logo" height="40" width="40">
@@ -34,10 +40,14 @@
         </p>
       </a>
     </div>
+    }
   </div>
+  }
 </main>
 <footer>
-  <div class="footer-container" *ngFor="let item of data">
+  @for (item of data; track $index) {
+  <div class="footer-container">
     <p>&copy; 2023 Linktree Clone by {{item.name}}</p>
   </div>
+  }
 </footer>
