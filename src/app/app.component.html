@@ -1,53 +1,58 @@
 <main>
-  @for (item of data; track $index) {
+  @if (isLoading()) {
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading profile...</p>
+  </div>
+  } @else if (error()) {
+  <div class="error-container">
+    <h2>Oops! Something went wrong</h2>
+    <p>{{ error() }}</p>
+    <button type="button" (click)="loadProfileData()" class="retry-button">
+      Try Again
+    </button>
+  </div> } @else if (currentProfile()) {
   <div class="container">
-    <div class="header-container">
-      <div class="share-button">
-        <p (click)="shareUrl()">
-          <svg width="20" height="20" viewBox="0 0 16 16" enable-background="new 0 0 24 24" class="sc-gKsewC iPWGYb">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M10.6464 3.85347L11 4.20702L11.7071 3.49992L11.3536 3.14636L8.35355 0.146362H7.64645L4.64645 3.14636L4.29289 3.49992L5 4.20702L5.35355 3.85347L7.5 1.70702V9.49992V9.99992H8.5V9.49992V1.70702L10.6464 3.85347ZM1 5.49994L1.5 4.99994H4V5.99994H2V14.9999H14V5.99994H12V4.99994H14.5L15 5.49994V15.4999L14.5 15.9999H1.5L1 15.4999V5.49994Z"
-              fill="currentColor"></path>
-          </svg>
-        </p>
-      </div>
+    @defer (on immediate; prefetch on idle) {
+    <app-profile-header [profile]="currentProfile()!"></app-profile-header>
+    } @placeholder {
+    <div class="profile-header-placeholder">
+      <div class="avatar-skeleton"></div>
+      <div class="info-skeleton"></div>
     </div>
-    <div class="image-container">
-      <img ngSrc="{{item.iconurl}}" width="96" priority height="96" alt="profile image">
-    </div>
-    <div class="text-container">
-      <div class="name">
-        <p>{{item.name}}</p>
-      </div>
-      <div class="desc">
-        <p>{{item.desc}}</p>
-      </div>
-    </div>
-
-    @for (item of data[0].links; track $index) {
-    <div class="tile-container">
-      <a class="tile" href={{item.url}} target="_blank">
-        <div class="icon">
-          <img ngSrc={{item.icon}} alt="app logo" height="40" width="40">
-        </div>
-        <p>{{item.name}}</p>
-        <p class="tile-share-button" (click)="shareLink(item.url)">
-          <svg width="18" height="18" viewBox="0 0 16 16" enable-background="new 0 0 24 24" class="sc-gKsewC iPWGYb">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M10.6464 3.85347L11 4.20702L11.7071 3.49992L11.3536 3.14636L8.35355 0.146362H7.64645L4.64645 3.14636L4.29289 3.49992L5 4.20702L5.35355 3.85347L7.5 1.70702V9.49992V9.99992H8.5V9.49992V1.70702L10.6464 3.85347ZM1 5.49994L1.5 4.99994H4V5.99994H2V14.9999H14V5.99994H12V4.99994H14.5L15 5.49994V15.4999L14.5 15.9999H1.5L1 15.4999V5.49994Z"
-              fill="currentColor"></path>
-          </svg>
-        </p>
-      </a>
+    } @error {
+    <div class="profile-header-error">
+      <p>Failed to load profile header</p>
     </div>
     }
+
+    <div class="links-container">
+      @for (link of currentProfile()!.links; track link.url) {
+      @defer (on immediate; prefetch on idle) {
+      <app-link-tile [link]="link"></app-link-tile>
+      } @placeholder {
+      <div class="link-tile-skeleton"></div>
+      } @error {
+      <div class="link-tile-error">
+        <p>Failed to load link</p>
+      </div>
+      }
+      }
+    </div>
   </div>
+
+  @defer (on immediate) {
+  <footer>
+    <div class="footer-container">
+      <p>&copy; {{ currentYear() }} Linktree Clone by {{ currentProfile()!.name }}</p>
+    </div>
+  </footer>
+  } @placeholder {
+  <div class="footer-placeholder"></div>
+  } @error {
+  <div class="footer-error">
+    <p>Footer unavailable</p>
+  </div>
+  }
   }
 </main>
-<footer>
-  @for (item of data; track $index) {
-  <div class="footer-container">
-    <p>&copy; 2023 Linktree Clone by {{item.name}}</p>
-  </div>
-  }
-</footer>

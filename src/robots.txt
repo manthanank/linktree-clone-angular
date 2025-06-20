@@ -1,4 +1,11 @@
-user-agent: *
-disallow: 
+# Robots.txt for Manthan Ankolekar - Link Hub
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /*.json$
 
-sitemap: https://linktree-clone-angular.vercel.app/sitemap-file.xml
+# Sitemap location
+Sitemap: https://linktree-clone-angular.vercel.app/sitemap.xml
+
+# Crawl delay for bots (optional)
+Crawl-delay: 1

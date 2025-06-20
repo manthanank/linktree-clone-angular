@@ -1,0 +1,21 @@
+/* TEAM */
+Developer: Manthan Ankolekar
+Contact: manthan.ank46 [at] gmail.com
+Website: https://manthanank.github.io/
+X: @manthan_ank
+LinkedIn: linkedin.com/in/manthanank
+GitHub: github.com/manthanank
+Location: India
+
+/* THANKS */
+Angular Team
+VS Code Team
+Vercel Team
+
+/* SITE */
+Last update: 2025/06/20
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+Components: Angular, TypeScript, SCSS
+Hosting: Vercel
