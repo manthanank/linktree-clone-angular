@@ -1,0 +1,17 @@
+<div class="tile-container">
+  <a class="tile" [href]="link().url" target="_blank">
+    <div class="icon">
+      <img [ngSrc]="link().icon" [alt]="link().name + ' logo'" [height]="iconSize().HEIGHT"
+        [width]="iconSize().WIDTH" />
+    </div>
+    <p>{{ link().name }}</p>
+    <button type="button" class="tile-link-button" (click)="onLinkClick($event)"
+      [attr.aria-label]="'Open ' + link().name + ' link'">
+      <svg [attr.width]="shareIconSize().WIDTH" [attr.height]="shareIconSize().HEIGHT" viewBox="0 0 24 24"
+        class="link-icon">
+        <path fill="currentColor"
+          d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+      </svg>
+    </button>
+  </a>
+</div>

@@ -1,21 +1,12 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Profile } from '../models/profile.interface';
-
-export interface SEOData {
-  title: string;
-  description: string;
-  keywords?: string;
-  image?: string;
-  url?: string;
-  type?: string;
-  author?: string;
-}
+import { SEOData } from '../models/seo.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class SeoService {
+export class Seo {
   private readonly meta = inject(Meta);
   private readonly title = inject(Title);
   private readonly baseUrl = 'https://linktree-clone-angular.vercel.app';
@@ -63,7 +54,9 @@ export class SeoService {
    */
   updateProfileSEO(profile: Profile): void {
     const title = `${profile.name} - ${profile.desc} | Link Hub`;
-    const description = profile.bio || `Connect with ${profile.name}, a ${profile.desc}. Find all social media profiles, projects, and professional links in one place.`;
+    const description =
+      profile.bio ||
+      `Connect with ${profile.name}, a ${profile.desc}. Find all social media profiles, projects, and professional links in one place.`;
     const imageUrl = `${this.baseUrl}/${profile.iconurl}`;
 
     // Create comprehensive keywords from profile data
@@ -73,7 +66,7 @@ export class SeoService {
       'Angular Developer',
       'Web Developer',
       'Portfolio',
-      'Social Links'
+      'Social Links',
     ];
 
     if (profile.skills) {
@@ -84,7 +77,7 @@ export class SeoService {
       keywordArray.push(profile.location);
     }
 
-    keywordArray.push(...profile.links.map(link => link.name));
+    keywordArray.push(...profile.links.map((link) => link.name));
 
     const keywords = keywordArray.join(', ');
 
@@ -95,7 +88,7 @@ export class SeoService {
       image: imageUrl,
       url: this.baseUrl,
       type: 'profile',
-      author: profile.name
+      author: profile.name,
     });
 
     // Update structured data
@@ -131,39 +124,43 @@ export class SeoService {
       'CSS',
       'SCSS',
       'Git',
-      'GitHub'
+      'GitHub',
     ];
 
     // Combine base knowledge with profile skills
     const knowledgeAreas = profile.skills
       ? [...new Set([...baseKnowledge, ...profile.skills])]
-      : baseKnowledge;    const structuredData = {
+      : baseKnowledge;
+    const structuredData = {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: profile.name,
       jobTitle: profile.desc,
-      description: profile.bio || `${profile.desc} specializing in web development and modern technologies`,
+      description:
+        profile.bio || `${profile.desc} specializing in web development and modern technologies`,
       url: 'https://manthanank.github.io/',
       email: 'manthan.ank46@gmail.com',
       image: `${this.baseUrl}/${profile.iconurl}`,
-      sameAs: profile.links.map(link => link.url),
+      sameAs: profile.links.map((link) => link.url),
       knowsAbout: knowledgeAreas,
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'professional',
-        email: 'manthan.ank46@gmail.com'
+        email: 'manthan.ank46@gmail.com',
       },
       ...(profile.location && {
         address: {
           '@type': 'PostalAddress',
           addressCountry: profile.location.includes('India') ? 'IN' : undefined,
-          addressLocality: profile.location
-        }
-      })
+          addressLocality: profile.location,
+        },
+      }),
     };
 
     // Remove existing structured data script
-    const existingScript = document.querySelector('script[type="application/ld+json"][data-dynamic="true"]');
+    const existingScript = document.querySelector(
+      'script[type="application/ld+json"][data-dynamic="true"]'
+    );
     if (existingScript) {
       existingScript.remove();
     }
@@ -179,7 +176,7 @@ export class SeoService {
   /**
    * Adds breadcrumb structured data
    */
-  addBreadcrumbStructuredData(breadcrumbs: Array<{name: string, url: string}>): void {
+  addBreadcrumbStructuredData(breadcrumbs: Array<{ name: string; url: string }>): void {
     const breadcrumbData = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -187,8 +184,8 @@ export class SeoService {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: item.url
-      }))
+        item: item.url,
+      })),
     };
 
     const script = document.createElement('script');

@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
 import { SHARE_MESSAGES } from '../constants/app.constants';
-
-export interface ShareData {
-  title: string;
-  text: string;
-  url: string;
-}
+import { ShareData } from '../models/share.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ShareService {
+export class Share {
   shareUrl(data: ShareData): void {
     if (this.isWebShareSupported()) {
       navigator.share(data).catch((err) => {

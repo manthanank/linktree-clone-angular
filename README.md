@@ -1,6 +1,6 @@
 # Linktree Clone in Angular
 
-A modern, responsive Linktree clone built with Angular 19. Create your own personal link hub with customizable profile and social media links.
+A modern, responsive Linktree clone built with Angular 20.1.0. Create your own personal link hub with customizable profile and social media links.
 
 ## Features ✨
 
@@ -47,7 +47,7 @@ Deploy your Linktree clone instantly with Vercel:
 
 ## Technology Stack 💻
 
-- **Angular 19** - Latest version with standalone components
+- **Angular 20.1.0** - Latest version with standalone components
 - **TypeScript** - Type-safe development
 - **SCSS** - Enhanced styling capabilities
 - **RxJS** - Reactive programming
@@ -129,4 +129,4 @@ If you found this project helpful, please give it a star! Your support means a l
 
 ---
 
-Built with ❤️ using Angular 19
+Built with ❤️ using Angular 20.1.0
