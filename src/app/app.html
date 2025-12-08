@@ -13,7 +13,7 @@
     </button>
   </div> } @else if (currentProfile()) {
   <div class="container">
-    @defer (on immediate; prefetch on idle) {
+    @defer (on immediate) {
     <app-profile-header [profile]="currentProfile()!"></app-profile-header>
     } @placeholder {
     <div class="profile-header-placeholder">
@@ -28,7 +28,7 @@
 
     <div class="links-container">
       @for (link of currentProfile()!.links; track link.url) {
-      @defer (on immediate; prefetch on idle) {
+      @defer (on immediate) {
       <app-link-tile [link]="link"></app-link-tile>
       } @placeholder {
       <div class="link-tile-skeleton"></div>
