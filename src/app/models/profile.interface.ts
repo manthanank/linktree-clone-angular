@@ -3,6 +3,13 @@ export interface Link {
   icon: string;
   url: string;
   description?: string;
+  pinned?: boolean;
+  category?: string;
+}
+
+export interface ProfileTheme {
+  gradient?: [string, string];
+  mode?: 'dark' | 'light';
 }
 
 export interface Profile {
@@ -13,6 +20,9 @@ export interface Profile {
   iconurl: string;
   links: Link[];
   skills?: string[];
+  theme?: ProfileTheme;
+  available?: boolean;
+  availabilityText?: string;
 }
 
 export interface ProfileData extends Array<Profile> {}

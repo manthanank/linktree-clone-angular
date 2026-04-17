@@ -5,48 +5,63 @@
     "bio": "Passionate Software Developer specializing in modern web technologies including Angular, React, and Node.js. Building innovative solutions and sharing knowledge with the developer community.",
     "location": "India",
     "iconurl": "images/picture.webp",
+    "available": true,
+    "availabilityText": "Open to freelance & collaborations",
+    "theme": {
+      "gradient": ["#7c3aed", "#db2777"],
+      "mode": "dark"
+    },
     "links": [
       {
         "name": "Website",
         "description": "Personal portfolio",
         "icon": "svg/website.svg",
-        "url": "https://manthanank.github.io/"
-      },
-      {
-        "name": "X",
-        "description": "Follow me on X for tech updates",
-        "icon": "svg/x.svg",
-        "url": "https://x.com/manthan_ank"
-      },
-      {
-        "name": "LinkedIn",
-        "description": "Professional network and career updates",
-        "icon": "svg/linkedin.svg",
-        "url": "https://www.linkedin.com/in/manthanank"
+        "url": "https://manthanank.github.io/",
+        "pinned": true,
+        "category": "Portfolio"
       },
       {
         "name": "GitHub",
         "description": "Open source projects and code repositories",
         "icon": "svg/github.svg",
-        "url": "https://github.com/manthanank"
+        "url": "https://github.com/manthanank",
+        "pinned": true,
+        "category": "Code"
       },
       {
-        "name": "Facebook",
-        "description": "Connect on Facebook",
-        "icon": "svg/facebook.svg",
-        "url": "https://www.facebook.com/manthanank/"
+        "name": "LinkedIn",
+        "description": "Professional network and career updates",
+        "icon": "svg/linkedin.svg",
+        "url": "https://www.linkedin.com/in/manthanank",
+        "category": "Social"
+      },
+      {
+        "name": "X",
+        "description": "Follow me on X for tech updates",
+        "icon": "svg/x.svg",
+        "url": "https://x.com/manthan_ank",
+        "category": "Social"
       },
       {
         "name": "YouTube",
         "description": "Programming tutorials and tech content",
         "icon": "svg/youtube.svg",
-        "url": "https://www.youtube.com/@manthanank"
+        "url": "https://www.youtube.com/@manthanank",
+        "category": "Content"
       },
       {
         "name": "Instagram",
         "description": "Behind the scenes and daily updates",
         "icon": "svg/instagram.svg",
-        "url": "https://www.instagram.com/manthan_ank/"
+        "url": "https://www.instagram.com/manthan_ank/",
+        "category": "Social"
+      },
+      {
+        "name": "Facebook",
+        "description": "Connect on Facebook",
+        "icon": "svg/facebook.svg",
+        "url": "https://www.facebook.com/manthanank/",
+        "category": "Social"
       }
     ],
     "skills": [

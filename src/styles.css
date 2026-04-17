@@ -1,26 +1,171 @@
-/* You can add global styles to this file, and also import other style files */
-* {
-    box-sizing: border-box;
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Font */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-spring: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.05) 0%, transparent 50%),
-        rgb(10, 10, 10);
-    color: rgb(240, 240, 240);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.4;
-    background-attachment: fixed;
+/* ============================================================
+   DARK THEME (default)
+   ============================================================ */
+[data-theme='dark'],
+:root:not([data-theme='light']) {
+  --bg-base: rgb(8, 8, 8);
+  --bg-surface: rgba(26, 26, 26, 0.85);
+  --bg-surface-hover: rgba(36, 36, 36, 0.95);
+  --bg-overlay: rgba(255, 255, 255, 0.05);
+  --bg-overlay-hover: rgba(255, 255, 255, 0.1);
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --text-primary: rgb(255, 255, 255);
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.5);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+  --radial-1: rgba(139, 92, 246, 0.08); /* Purple */
+  --radial-2: rgba(236, 72, 153, 0.06); /* Pink */
+  --radial-3: rgba(59, 130, 246, 0.05); /* Blue */
+
+  --chip-bg: rgb(76, 29, 149); /* Deep purple */
+  --chip-border: rgba(139, 92, 246, 0.4);
+  --chip-text: rgb(255, 255, 255);
+
+  --pin-bg: rgba(251, 191, 36, 0.2);
+  --pin-border: rgba(251, 191, 36, 0.4);
+  --pin-text: rgb(251, 191, 36);
+
+  --available-bg: rgba(34, 197, 94, 0.15);
+  --available-border: rgba(34, 197, 94, 0.3);
+  --available-text: rgb(74, 222, 128);
+  --available-dot: rgb(34, 197, 94);
+
+  --toggle-bg: rgba(255, 255, 255, 0.06);
+  --toggle-icon: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+[data-theme='light'] {
+  --bg-base: rgb(248, 248, 252);
+  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-surface-hover: rgba(250, 250, 255, 0.98);
+  --bg-overlay: rgba(0, 0, 0, 0.04);
+  --bg-overlay-hover: rgba(0, 0, 0, 0.08);
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.18);
+
+  --text-primary: rgb(15, 15, 20);
+  --text-secondary: rgba(30, 30, 40, 0.72);
+  --text-muted: rgba(60, 60, 80, 0.5);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  --radial-1: rgba(120, 119, 198, 0.08);
+  --radial-2: rgba(219, 39, 119, 0.05);
+  --radial-3: rgba(14, 165, 233, 0.06);
+
+  --chip-bg: rgba(124, 58, 237, 0.08);
+  --chip-border: rgba(124, 58, 237, 0.2);
+  --chip-text: rgb(109, 40, 217);
+
+  --pin-bg: rgba(217, 119, 6, 0.08);
+  --pin-border: rgba(217, 119, 6, 0.2);
+  --pin-text: rgb(180, 83, 9);
+
+  --available-bg: rgba(22, 163, 74, 0.08);
+  --available-border: rgba(22, 163, 74, 0.2);
+  --available-text: rgb(21, 128, 61);
+  --available-dot: rgb(22, 163, 74);
+
+  --toggle-bg: rgba(0, 0, 0, 0.07);
+  --toggle-icon: rgba(30, 30, 40, 0.75);
+}
+
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    height: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 50%, var(--radial-1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--radial-2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, var(--radial-3) 0%, transparent 50%),
+    var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  background-attachment: fixed;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-    min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   STAGGERED LINK ANIMATION
+   ============================================================ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.3); }
 }

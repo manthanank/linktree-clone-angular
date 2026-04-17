@@ -1,17 +1,62 @@
 <div class="profile-header">
-  <div class="header-container">
-    <button type="button" class="share-button" (click)="onShareProfile()" aria-label="Share profile">
-      <svg width="20" height="20" viewBox="0 0 24 24" class="share-icon">
-        <path fill="currentColor"
-          d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92Z" />
-      </svg>
-    </button>
+  <div class="header-actions">
+    <app-theme-toggle />
+
+    <div class="action-group">
+      <!-- Copy URL button -->
+      <button
+        type="button"
+        id="copy-url-btn"
+        class="action-button"
+        (click)="onCopyUrl()"
+        [attr.aria-label]="copyTooltip() === 'copied' ? 'URL copied!' : 'Copy profile URL'"
+        [class.copied]="copyTooltip() === 'copied'"
+      >
+        @if (copyTooltip() === 'copied') {
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        } @else {
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        }
+      </button>
+
+      <!-- Share button -->
+      <button
+        type="button"
+        id="share-profile-btn"
+        class="action-button"
+        (click)="onShareProfile()"
+        aria-label="Share profile"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <div class="profile-content">
-    <div class="image-container">
-      <img [ngSrc]="profile().iconurl" [width]="imageSize().WIDTH" priority [height]="imageSize().HEIGHT"
-        [alt]="profile().name + ' profile image'" />
+    <div class="image-wrapper">
+      <div class="image-container">
+        <img
+          [ngSrc]="profile().iconurl"
+          [width]="imageSize().WIDTH"
+          priority
+          [height]="imageSize().HEIGHT"
+          [alt]="profile().name + ' profile image'"
+        />
+      </div>
+      @if (profile().available) {
+        <span class="available-dot" title="Available"></span>
+      }
     </div>
 
     <div class="text-container">
@@ -21,6 +66,27 @@
       <div class="desc">
         <p>{{ profile().desc }}</p>
       </div>
+
+      @if (profile().available && profile().availabilityText) {
+        <div class="availability-badge" role="status">
+          <span class="availability-dot" aria-hidden="true"></span>
+          {{ profile().availabilityText }}
+        </div>
+      }
+
+      @if (profile().location) {
+        <div class="location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>{{ profile().location }}</span>
+        </div>
+      }
+
+      @if (skills().length > 0) {
+        <app-skills-chips [skills]="skills()" />
+      }
     </div>
   </div>
 </div>

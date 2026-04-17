@@ -1,19 +1,31 @@
-import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProfileData } from './models/profile.interface';
 import { ProfileHeader } from './components/profile-header/profile-header';
 import { LinkTile } from './components/link-tile/link-tile';
 import { Profile } from './services/profile';
 import { Seo } from './services/seo';
+import { ThemeService } from './services/theme';
 
 @Component({
   selector: 'app-root',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ProfileHeader, LinkTile],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App implements OnInit {
   protected readonly title = signal('linktree-clone-angular');
+
   // Signals for state management
   profileData = signal<ProfileData | null>(null);
   isLoading = signal(true);
@@ -25,9 +37,23 @@ export class App implements OnInit {
     return data && data.length > 0 ? data[0] : null;
   });
   currentYear = computed(() => new Date().getFullYear());
+
+  /** Sorted links: pinned first, then rest in original order */
+  sortedLinks = computed(() => {
+    const profile = this.currentProfile();
+    if (!profile) return [];
+    return [...profile.links].sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return 0;
+    });
+  });
+
   private readonly profileService = inject(Profile);
   private readonly destroyRef = inject(DestroyRef);
   private readonly seoService = inject(Seo);
+  // Inject ThemeService eagerly so the theme effect runs immediately on boot
+  private readonly _themeService = inject(ThemeService);
 
   constructor() {
     // Effect to track profile data changes and update SEO meta tags
@@ -38,9 +64,11 @@ export class App implements OnInit {
       }
     });
   }
+
   ngOnInit(): void {
     this.loadProfileData();
   }
+
   loadProfileData(): void {
     this.isLoading.set(true);
     this.error.set(null);

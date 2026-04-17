@@ -1,17 +1,50 @@
-<div class="tile-container">
-  <a class="tile" [href]="link().url" target="_blank">
+<div class="tile-container" [style.animation-delay]="animationDelay()">
+  <a
+    class="tile"
+    [href]="link().url"
+    target="_blank"
+    rel="noopener noreferrer"
+    [class.pinned]="link().pinned"
+    (click)="onLinkClick($event)"
+    [attr.aria-label]="'Open ' + link().name"
+  >
+    @if (link().pinned) {
+      <span class="pin-badge" aria-label="Pinned link">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z"/>
+        </svg>
+      </span>
+    }
+
     <div class="icon">
-      <img [ngSrc]="link().icon" [alt]="link().name + ' logo'" [height]="iconSize().HEIGHT"
-        [width]="iconSize().WIDTH" />
+      <img
+        [ngSrc]="link().icon"
+        [alt]="link().name + ' logo'"
+        [height]="iconSize().HEIGHT"
+        [width]="iconSize().WIDTH"
+      />
     </div>
-    <p>{{ link().name }}</p>
-    <button type="button" class="tile-link-button" (click)="onLinkClick($event)"
-      [attr.aria-label]="'Open ' + link().name + ' link'">
-      <svg [attr.width]="shareIconSize().WIDTH" [attr.height]="shareIconSize().HEIGHT" viewBox="0 0 24 24"
-        class="link-icon">
-        <path fill="currentColor"
-          d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
-      </svg>
-    </button>
+
+    <div class="tile-info">
+      <p class="tile-name">{{ link().name }}</p>
+      @if (link().description) {
+        <span class="tile-desc">{{ link().description }}</span>
+      }
+    </div>
+
+    <div class="tile-meta">
+      @if (clickCount() > 0) {
+        <span class="click-count" [attr.aria-label]="clickCount() + ' clicks'">
+          {{ clickCount() }}
+        </span>
+      }
+      <span class="external-icon" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </span>
+    </div>
   </a>
 </div>

@@ -1,145 +1,206 @@
 .tile-container {
   width: 100%;
-  margin: 8px 0;
+  margin: 10px 0;
+  animation: slideInUp 0.45s ease both;
 }
+
 .tile {
   width: 100%;
-  background: linear-gradient(135deg, rgba(37, 37, 37, 0.9), rgba(45, 45, 45, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: rgb(240, 240, 240);
-  padding: 16px;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  padding: 16px 20px;
+  transition: all var(--transition-spring);
+  backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
+  gap: 16px;
 }
 
+/* Shine overlay on hover */
 .tile::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
   pointer-events: none;
 }
+
 .tile:hover {
-  transform: translateY(-2px) scale(1.01);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-surface-hover);
 }
 
-.tile:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.4);
-  outline-offset: 2px;
-}
 .tile:hover::before {
   opacity: 1;
 }
+
+.tile:focus-visible {
+  outline: 2px solid var(--border-strong);
+  outline-offset: 2px;
+}
+
+/* Pinned variant */
+.tile.pinned {
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  background: linear-gradient(165deg, rgba(251, 191, 36, 0.04) 0%, var(--bg-surface) 100%);
+}
+
+.tile.pinned:hover {
+  border-color: var(--pin-text);
+  background: linear-gradient(165deg, rgba(251, 191, 36, 0.08) 0%, var(--bg-surface-hover) 100%);
+}
+
+/* Pin badge */
+.pin-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--pin-text);
+  color: #111;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-spring);
+}
+
+.tile:hover .pin-badge {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Icon */
 .icon {
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 16px;
   flex-shrink: 0;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.tile:hover .icon {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
 }
 
 .icon img {
-  border-radius: 8px;
-  object-fit: cover;
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   display: block;
-  margin: auto;
 }
-.tile-link-button {
-  width: 44px;
-  height: 44px;
-  border-radius: 22px;
-  background-color: rgba(52, 52, 52, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
+
+/* Text info */
+.tile-info {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.tile-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile-desc {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+/* Right meta */
+.tile-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.click-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 4px;
+  border-radius: 50%;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-size: 10px;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.external-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(240, 240, 240);
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  margin-left: 12px;
-  backdrop-filter: blur(10px);
-  z-index: 2;
-  position: relative;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  opacity: 0.6;
 }
 
-.tile-link-button:hover {
-  background-color: rgba(72, 72, 72, 0.9);
-  transform: scale(1.05);
-  border-color: rgba(255, 255, 255, 0.2);
+.tile:hover .external-icon {
+  color: var(--text-primary);
+  transform: translate(2px, -2px);
+  opacity: 1;
 }
 
-.tile-link-button:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.4);
-  outline-offset: 1px;
-}
-
-.tile-link-button:active {
-  transform: scale(0.95);
-}
-
-.link-icon {
-  color: inherit;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-  flex: 1;
-  text-align: left;
-  letter-spacing: -0.3px;
-  line-height: 1.3;
-}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 480px) {
   .tile {
-    padding: 12px;
+    padding: 14px;
+    gap: 14px;
   }
+
   .icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 12px;
-    padding: 0;
+    width: 44px;
+    height: 44px;
   }
 
   .icon img {
-    width: 28px;
-    height: 28px;
-    margin: auto;
+    width: 22px;
+    height: 22px;
   }
 
-  p {
+  .tile-name {
     font-size: 16px;
-    letter-spacing: -0.2px;
-  }
-  .tile-link-button {
-    width: 38px;
-    height: 38px;
-    margin-left: 8px;
   }
 
-  .tile:hover {
-    transform: translateY(-1px) scale(1.005);
+  .tile-desc {
+    font-size: 12px;
   }
 }

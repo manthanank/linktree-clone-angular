@@ -11,7 +11,8 @@
     <button type="button" (click)="loadProfileData()" class="retry-button">
       Try Again
     </button>
-  </div> } @else if (currentProfile()) {
+  </div>
+  } @else if (currentProfile()) {
   <div class="container">
     @defer (on immediate) {
     <app-profile-header [profile]="currentProfile()!"></app-profile-header>
@@ -27,9 +28,9 @@
     }
 
     <div class="links-container">
-      @for (link of currentProfile()!.links; track link.url) {
+      @for (link of sortedLinks(); track link.url; let i = $index) {
       @defer (on immediate) {
-      <app-link-tile [link]="link"></app-link-tile>
+      <app-link-tile [link]="link" [index]="i"></app-link-tile>
       } @placeholder {
       <div class="link-tile-skeleton"></div>
       } @error {
